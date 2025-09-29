@@ -15,15 +15,25 @@ Raw file: ~100k rows, 10 columns (e.g., geo_id, facet, value).
 **Citation**: Anthropic Economic Index (AEI) - Claude AI Usage Data. Sourced from Anthropic's Sep 15, 2025 raw CSV (via direct download). Link: [Anthropic AEI Dataset](https://www-cdn.anthropic.com/2a6b74e3f9a0e12b61b08d43337622b05da641dc.zip).
 
 
-## Steps to Reproduce Analysis
-1. **Setup**: Install dependencies from `requirements.txt`.
-2. **Preprocessing**: Run `src/preprocess.py` to filter raw data (saved in `data/processed/aei_cleaned.csv`).
-3. **Exploratory Data Analysis**: Available in `notebooks/01_eda.ipynb`.
-4. **Generate Visualizations**:
-   - Run `src/firstvisualization.py` for collaboration bar chart.
-   - Run `src/secondvisualization.py` for automation vs. augmentation.
-   - Run `src/plot_task_visualization.py` for task specialization index.
-   Outputs saved to `figures/`.
+## Reproduce Analysis
+```bash
+# setup
+python -m venv venv
+source venv/bin/activate # if you use venv
+pip install -r requirements.txt
+
+# preprocess data
+python src/preprocess.py
+
+# generate visualizations (running order is not required)
+python src/chart1_collab_difference.py
+python src/chart2_collab_scatter.py
+python src/chart3_automation_augmentation.py
+python src/chart4_task_specialization.py
+
+# exploratory analysis
+jupyter notebook notebooks/01_eda.ipynb
+```
 
 ## Limitations
 Data:
