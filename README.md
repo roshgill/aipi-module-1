@@ -21,9 +21,19 @@ Raw file: ~100k rows, 10 columns (e.g., geo_id, facet, value).
 
 **Citation**: Anthropic Economic Index (AEI) - Claude AI Usage Data. Sourced from Anthropic's Sep 15, 2025 raw CSV (via direct download). Link: [Anthropic AEI Dataset](https://www-cdn.anthropic.com/2a6b74e3f9a0e12b61b08d43337622b05da641dc.zip).
 
+## Feature Engineering
+
+We added some extra features to find more patterns:
+
+- **Augmentation Ratio**: how much states prefer augmentation vs automation style AI
+- **Regional grouping**: Northeast, Southeast, Midwest, West
 
 ## Reproduce Analysis
 ```bash
+# clone this repository
+git clone https://github.com/roshgill/aipi-module-1.git
+cd aipi-module-1
+
 # setup
 python -m venv venv
 source venv/bin/activate # if you use venv
@@ -37,6 +47,7 @@ python src/chart1_collab_difference.py
 python src/chart2_collab_scatter.py
 python src/chart3_automation_augmentation.py
 python src/chart4_task_specialization.py
+python src/chart5_feature_analysis.py
 
 # exploratory analysis
 jupyter notebook notebooks/01_eda.ipynb
