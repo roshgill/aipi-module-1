@@ -2,6 +2,14 @@
 
 Our project analyzes Claude AI usage data from the Antrhopic Economic Index (AEI) to compare collaboration patterns and tasks in North Carolina vs the US avg. As part of our keys findings, NC shows higher "tasks interation" and augmentatin-style use of AI, which suggests more creative use with human-input collaboration to reach goals. 
 
+## Infographic
+🔗 **[View our infographic data story](https://roshgill.github.io/aipi-module-1/)**
+
+<div align="center">
+<img src="infographic-preview.png" alt="Infographic Preview" width="500">
+</div>
+
+
 ## Citation
 A public dataset of Claude AI (Free/Pro) from Anthropic Economic Index was used for this analysis with an usage rangr from Aug-11, 2025.
 Includes:
