@@ -7,11 +7,8 @@ def preprocess():
 
     df = pd.read_csv(input_path)
 
-    # Filter to NC and US
-    df = df[
-        ((df['geography'] == 'state_us') & (df['geo_id'] == 'NC')) |
-        ((df['geography'] == 'country') & (df['geo_id'] == 'US'))
-    ]
+    # Filter to all US states
+    df = df[df['geography'] == 'state_us']
 
     # Keep collaboration and onet_task facets.
     # Help us distinguish the types of tasks done and 5 collaboration metrics between US states and North Carolina

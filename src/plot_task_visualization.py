@@ -16,22 +16,33 @@ df = pd.read_csv("data/processed/aei_cleaned.csv")
 df_pct = df[(df['facet'] == 'onet_task') & (df['variable'] == 'onet_task_pct')]
 df_count = df[(df['facet'] == 'onet_task') & (df['variable'] == 'onet_task_count')]
 
-# Pivot to get NC and US side-by-side
+# Pivot to get all states side-by-side
 df_pct_pivot = df_pct.pivot(index='cluster_name', columns='geo_id', values='value').reset_index()
 df_count_pivot = df_count.pivot(index='cluster_name', columns='geo_id', values='value').reset_index()
 
+# Calculate US average from other states (excluding NC)
+state_cols_pct = [col for col in df_pct_pivot.columns if col not in ['cluster_name', 'NC']]
+state_cols_count = [col for col in df_count_pivot.columns if col not in ['cluster_name', 'NC']]
+
+df_pct_pivot['US_avg_pct'] = df_pct_pivot[state_cols_pct].mean(axis=1)
+df_count_pivot['US_avg_count'] = df_count_pivot[state_cols_count].mean(axis=1)
+
+# Keep only NC and US averages
+df_pct_final = df_pct_pivot[['cluster_name', 'NC', 'US_avg_pct']].copy()
+df_count_final = df_count_pivot[['cluster_name', 'NC', 'US_avg_count']].copy()
+
 # Merge pct and count data
-df_merged = pd.merge(df_pct_pivot, df_count_pivot, on='cluster_name', suffixes=('_pct', '_count'))
+df_merged = pd.merge(df_pct_final, df_count_final, on='cluster_name', suffixes=('_pct', '_count'))
 
 # Filter out low-volume tasks
 min_nc_count = 30
 df_filtered = df_merged[df_merged['NC_count'] >= min_nc_count].copy()
 
 # Avoid divide-by-zero
-df_filtered = df_filtered[df_filtered['US_pct'] > 0].copy()
+df_filtered = df_filtered[df_filtered['US_avg_pct'] > 0].copy()
 
 # Compute specialization index
-df_filtered['specialization_index'] = df_filtered['NC_pct'] / df_filtered['US_pct']
+df_filtered['specialization_index'] = df_filtered['NC_pct'] / df_filtered['US_avg_pct']
 
 # Sort and select top/bottom tasks
 top_n = 5
@@ -52,8 +63,8 @@ ax.axvline(1.0, color='gray', linestyle='--', linewidth=1.2, label='US baseline 
 
 ax.set_yticks(y)
 ax.set_yticklabels(df_final['cluster_name'])
-ax.set_xlabel("Specialization Index (NC_pct / US_pct)")
-ax.set_title("Task Specialization: North Carolina vs U.S. ")
+ax.set_xlabel("Specialization Index (NC_pct / US_avg_pct)")
+ax.set_title("Task Specialization: North Carolina vs U.S. Average")
 
 # Legend
 legend_items = [
