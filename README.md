@@ -1,6 +1,5 @@
 # AIPI 510 Project 1: Data Storytelling - AI Usage in North Carolina
 
-## Overview
 Our project analyzes Claude AI usage data from the Antrhopic Economic Index (AEI) to compare collaboration patterns and tasks in North Carolina vs the US avg. As part of our keys findings, NC shows higher "tasks interation" and augmentatin-style use of AI, which suggests more creative use with human-input collaboration to reach goals. 
 
 ## Citation

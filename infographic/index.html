@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How North Carolina Uses AI Differently</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .header {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 1;
+        }
+        
+        .header h1,
+        .header .subtitle,
+        .header .source {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        
+        .header .subtitle {
+            font-size: clamp(15px, 2vw, 18px);
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .header .source {
+            font-size: clamp(12px, 1.5vw, 14px);
+            opacity: 0.8;
+            margin-top: 12px;
+        }
+        
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section.with-background {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .section.with-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.92);
+            z-index: 1;
+        }
+        
+        .section.with-background > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 3vw, 30px);
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-number {
+            text-align: center;
+        }
+        
+        .finding-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .finding-value {
+            font-size: clamp(56px, 8vw, 80px);
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .finding-desc {
+            font-size: clamp(13px, 1.8vw, 16px);
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .comparison {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin: 30px 0;
+        }
+        
+        .comparison-item {
+            text-align: center;
+        }
+        
+        .comparison-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .comparison-value {
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .comparison-value.nc {
+            color: #1f77b4;
+        }
+        
+        .comparison-value.us {
+            color: #ff7f0e;
+        }
+        
+        .bar-chart {
+            margin: 20px 0;
+        }
+        
+        .bar-item {
+            margin-bottom: 12px;
+        }
+        
+        .bar-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .bar-track {
+            background: #f0f0f0;
+            height: 26px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: width 0.8s ease;
+        }
+        
+        .bar-fill.positive {
+            background: #2ca02c;
+        }
+        
+        .bar-fill.negative {
+            background: #d62728;
+        }
+        
+        .specialization-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin: 30px 0;
+        }
+        
+        .spec-column h3 {
+            font-size: clamp(16px, 2vw, 19px);
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        
+        .spec-column.over h3 {
+            color: #2ca02c;
+        }
+        
+        .spec-column.under h3 {
+            color: #d62728;
+        }
+        
+        .spec-item {
+            padding: 14px 16px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .spec-task {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.3;
+            flex: 1;
+        }
+        
+        .spec-value {
+            font-size: 19px;
+            font-weight: 700;
+            margin-left: 15px;
+        }
+        
+        .spec-value.over {
+            color: #2ca02c;
+        }
+        
+        .spec-value.under {
+            color: #d62728;
+        }
+        
+        .implications {
+            background: #f9f9f9;
+            padding: 25px 30px;
+            border-radius: 10px;
+        }
+        
+        .implications h3 {
+            font-size: clamp(17px, 2vw, 20px);
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        
+        .implications ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .implications li {
+            font-size: clamp(13px, 1.8vw, 15px);
+            color: #666;
+            margin-bottom: 9px;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .implications li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .footer {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            padding: 35px 40px;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .footer > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            width: 50px;
+            height: 3px;
+            background: #667eea;
+            margin: 18px auto;
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .section {
+                padding: 35px 30px;
+            }
+            
+            .comparison {
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .infographic {
+                border-radius: 15px;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .specialization-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .comparison {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>How North Carolina<br>Uses AI Differently</h1>
+            <div class="subtitle">240 hours of Claude conversations reveal distinct patterns</div>
+            <div class="source">Anthropic Economic Index • August 4-11, 2025 • 50 US states</div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">NC Iterates More</div>
+            <div class="hero-section">
+                <div class="hero-number">
+                    <div class="finding-label">Task Iteration</div>
+                    <div class="finding-value">+3.9%</div>
+                </div>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span>task iteration</span>
+                            <span>+3.9%</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill positive" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span>learning</span>
+                            <span>+1.3%</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill positive" style="width: 26%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span>directive</span>
+                            <span>-0.6%</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill negative" style="width: 12%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span>feedback loop</span>
+                            <span>-0.6%</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill negative" style="width: 12%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="finding-desc" style="text-align: center; margin-top: 25px;">
+                North Carolina users cycle through more drafts and revisions compared to the national average
+            </div>
+        </div>
+        
+        <div class="section with-background">
+            <div class="section-title">Augmentation > Automation</div>
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-label">North Carolina</div>
+                    <div class="comparison-value nc">52.9%</div>
+                    <div class="finding-desc">augmentation</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">US Average</div>
+                    <div class="comparison-value us">49.2%</div>
+                    <div class="finding-desc">augmentation</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="finding-desc" style="text-align: center; margin-top: 15px;">
+                NC users treat AI as a collaborative partner rather than a command-driven tool
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">What Work NC Specializes In</div>
+            <div class="specialization-grid">
+                <div class="spec-column over">
+                    <h3>Over-Indexed Tasks</h3>
+                    <div class="spec-item">
+                        <div class="spec-task">writing & editing documentation</div>
+                        <div class="spec-value over">1.8x</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-task">instructional material development</div>
+                        <div class="spec-value over">1.6x</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-task">career guidance & counseling</div>
+                        <div class="spec-value over">1.5x</div>
+                    </div>
+                </div>
+                <div class="spec-column under">
+                    <h3>Under-Indexed Tasks</h3>
+                    <div class="spec-item">
+                        <div class="spec-task">routine system administration</div>
+                        <div class="spec-value under">0.6x</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-task">basic troubleshooting</div>
+                        <div class="spec-value under">0.5x</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-task">hardware maintenance</div>
+                        <div class="spec-value under">0.4x</div>
+                    </div>
+                </div>
+            </div>
+            <div class="finding-desc" style="text-align: center; margin-top: 20px;">
+                reflects Research Triangle Park, universities, education & life sciences sectors
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Why It Matters</div>
+            <div class="implications">
+                <h3>Implications</h3>
+                <ul>
+                    <li>regional economic strategies should consider distinct AI adoption patterns</li>
+                    <li>workforce training may need to emphasize iterative collaboration skills</li>
+                    <li>education sector shows strong early adoption—opportunity for support programs</li>
+                    <li>understanding "how" regions use AI matters as much as "if" they use it</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-title">Data Limitations</div>
+            <div class="footer-text">
+                one-week snapshot (August 4-11, 2025) • Claude users only, not representative of all workers • 
+                correlation patterns, not causal claims • aggregated and anonymized by Anthropic • 
+                regional differences likely reflect industry mix, demographics, and local economic structure
+            </div>
+            <div style="margin-top: 18px; font-size: 11px; opacity: 0.8;">
+                Jonas Neves & Roshan Gill • Duke AIPI 590 • Module Project 1
+            </div>
+        </div>
+    </div>
+</body>
+</html>
