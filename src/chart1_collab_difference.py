@@ -1,3 +1,10 @@
+# Citation:
+# AI Tool Used: Claude Code Agent
+# Prompt: Create a python file which retrieves aei_cleaned.csv from data/processed/aei_cleaned.csv pathway
+# extracts collaboration and collaboration_pct from facet and variable columns, calculate US and NC collaboration average values
+# and differentiate between. Generate a horizontal barchart showcasing the output values.
+# Rationale: Our goal was to compare the AI collaboration usage rates between United States and North Carolina.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
