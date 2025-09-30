@@ -1,3 +1,10 @@
+# Citation:
+# AI Tool Used: Claude Code Agent
+# Prompt: Create a python file which loads cleaned data, filter onet_task data,
+# calculate the specialization index for each task. I want the top 5 over and under indexed tasks
+# Horizontal bar chart
+# Rationale: We wanted to find which tasks NC specializes in compared to US average.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
