@@ -1,3 +1,14 @@
+# Citation:
+# AI Tool Used: Claude Code Agent
+# Prompt: Create a python file which retrieves aei_cleaned.csv from data/processed/aei_cleaned.csv pathway.
+# Next, create a group map set containing directive (key): Automation (value), feedback loop (key): Automation (value)
+# validation (key): Augmentation, task iteration: Augmentation, learning: Augmentation
+# Again, separate collaboration and collaboration_pct rows from cleaned database.
+# Then map cluster name to groups and group them by automation/augmentation and geo_id, and create a bar chart
+# to compare NC vs US group averages. Make it look simple and comprehendable.
+# Rationale: Our goal was to label the collaboration patterns as either automated or augmented, retrieve collaboration data
+# from cleaned dataset and create the metric comparison between NC and US.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
