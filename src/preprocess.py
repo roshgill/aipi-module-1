@@ -1,3 +1,13 @@
+# Citation:
+# AI Tool Used: Claude Code Agent
+# Prompt: Create a Python preprocessing script that loads the AEI dataset. Then filter to US states only.
+# Keep collaboration and onet_task facets with their corresponding features.
+# Removes not_classified and none entries.
+# Saves dataset into processed folder. Include hardcoded file paths and print confirmation messages.
+# 
+# Rationale: We needed to clean the raw dataset by filtering to relevant US state data and remove irrelevant entries.
+
+
 import pandas as pd
 from feature_engineering import engineer_features
 
