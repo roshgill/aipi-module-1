@@ -1,3 +1,10 @@
+# Citation:
+# AI Tool: Claude Code
+# Prompt: make a scatter plot comparing NC vs US average for each collaboration pattern. 
+# add a diagonal line where they'd be equal and label each point
+# Rationale: scatter plot makes it easier to see which patterns NC over/under indexes on
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
