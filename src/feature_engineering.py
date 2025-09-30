@@ -1,3 +1,10 @@
+# Citation:
+# AI Tool: Claude Code
+# Prompt: create feature engineering functions to add regional groupings for states 
+# and calculate augmentation/automation ratios based on collaboration patterns
+# Rationale: see if regional patterns exist beyond just NC vs US comparison
+
+
 import pandas as pd
 import numpy as np
 

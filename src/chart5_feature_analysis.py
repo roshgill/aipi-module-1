@@ -1,3 +1,10 @@
+# Citation:
+# AI Tool: Claude Code
+# Prompt: create visualization showing augmentation ratio across all states, color by 
+# region and highlight NC. Add legend explaining regions. Sort by ratio
+# Rationale: show NC in regional context; does the Southeast have similar patterns or is NC unique?
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
